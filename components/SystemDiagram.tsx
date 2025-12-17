@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
+import { PRODUCTS } from '../constants';
+import { Plug, CheckCircle2 } from 'lucide-react';
 
 type KitType = '6.5kw' | '5kw';
 
 export const SystemDiagram: React.FC = () => {
   const [activeKit, setActiveKit] = useState<KitType>('6.5kw');
+
+  // Helper to get product data for easy access
+  const product65 = PRODUCTS.find(p => p.id === 'kit-6.5kw');
+  const product5 = PRODUCTS.find(p => p.id === 'kit-5kw');
 
   const kitData = {
     '6.5kw': {
@@ -12,7 +18,8 @@ export const SystemDiagram: React.FC = () => {
       voltage: '120/240V',
       battery: '14.3 kWh',
       panels: '12x Paneles',
-      panelPower: '7440Wp'
+      panelPower: '7440Wp',
+      appliances: product65?.supportedDevices || []
     },
     '5kw': {
       title: 'Configuración Kit 5KW',
@@ -20,7 +27,8 @@ export const SystemDiagram: React.FC = () => {
       voltage: '120V',
       battery: '10.49 kWh',
       panels: '6x Paneles',
-      panelPower: '3720Wp'
+      panelPower: '3720Wp',
+      appliances: product5?.supportedDevices || []
     }
   };
 
@@ -30,12 +38,12 @@ export const SystemDiagram: React.FC = () => {
     <section className="py-20 bg-slate-50 border-y border-slate-200">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center mb-10 text-center">
-             <h2 className="text-3xl font-bold text-slate-900 mb-4">Diagrama de Conexión</h2>
+             <h2 className="text-3xl font-bold text-slate-900 mb-4">Diagrama y Capacidad</h2>
              <p className="text-slate-600 text-lg max-w-2xl mb-8">
-              Visualiza cómo se integran los componentes en cada uno de nuestros kits. Selecciona una opción para ver los detalles.
+              Visualiza cómo se integran los componentes y qué equipos soporta cada kit. Selecciona una opción para ver los detalles.
             </p>
 
-            <div className="flex bg-slate-200 p-1 rounded-lg">
+            <div className="flex bg-slate-200 p-1 rounded-lg shadow-inner">
                 <button
                     onClick={() => setActiveKit('6.5kw')}
                     className={`px-6 py-2 rounded-md font-bold text-sm transition-all ${activeKit === '6.5kw' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
@@ -51,9 +59,10 @@ export const SystemDiagram: React.FC = () => {
             </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center gap-12">
+        <div className="flex flex-col lg:flex-row gap-8">
           
-          <div className="md:w-1/3 space-y-6">
+          <div className="lg:w-1/3 space-y-6">
+             {/* Tech Specs Box */}
              <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
                 <h3 className="font-bold text-xl text-slate-900 mb-4">{current.title}</h3>
                 <ul className="space-y-4">
@@ -80,13 +89,29 @@ export const SystemDiagram: React.FC = () => {
                      </li>
                 </ul>
              </div>
-             
-             <div className="p-4 bg-slate-100 rounded-lg text-xs text-slate-500">
-                  <p><strong>Nota:</strong> El inversor gestiona automáticamente el flujo de energía. Prioriza el sol, carga las baterías y usa la red eléctrica solo como respaldo.</p>
-              </div>
+
+             {/* Supported Apps Box (Dynamic) */}
+             <div className="bg-white p-6 rounded-xl shadow-md border border-purple-100 relative overflow-hidden transition-all duration-300">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-purple-100 rounded-bl-full -mr-4 -mt-4 opacity-50"></div>
+                <h3 className="font-bold text-lg text-slate-900 mb-4 flex items-center gap-2">
+                    <Plug size={20} className="text-purple-600" />
+                    Capacidad Estimada
+                </h3>
+                <div className="space-y-3">
+                    {current.appliances.map((app, idx) => (
+                        <div key={idx} className="flex items-start gap-2 text-sm text-slate-700 animate-fade-in-up" style={{animationDelay: `${idx * 50}ms`}}>
+                            <CheckCircle2 size={16} className="text-purple-500 mt-0.5 flex-shrink-0" />
+                            <span>{app}</span>
+                        </div>
+                    ))}
+                </div>
+                <p className="text-xs text-slate-400 mt-4 italic">
+                    * Estimación basada en uso eficiente de la energía.
+                </p>
+             </div>
           </div>
 
-          <div className="md:w-2/3 w-full bg-white p-6 rounded-xl shadow-lg border border-slate-100 flex justify-center relative overflow-hidden transition-all duration-300">
+          <div className="lg:w-2/3 w-full bg-white p-6 rounded-xl shadow-lg border border-slate-100 flex justify-center relative overflow-hidden">
             {/* Diagram SVG */}
             <svg viewBox="0 0 800 500" className="w-full h-auto max-w-2xl">
               

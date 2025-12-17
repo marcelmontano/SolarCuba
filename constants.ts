@@ -49,6 +49,14 @@ export const PRODUCTS: Product[] = [
         category: "Paneles",
         items: ["12x Módulos 620Wp", "7440 Wp Total", "Inclinación 15°"]
       }
+    ],
+    supportedDevices: [
+      "3x Aires Acondicionados (Split 1T)",
+      "Refrigerador + Freezer",
+      "Lavadora Automática",
+      "Bomba de Agua (1/2 HP)",
+      "Iluminación Completa + TV + PC",
+      "Microondas (Uso intermitente)"
     ]
   },
   {
@@ -71,6 +79,14 @@ export const PRODUCTS: Product[] = [
         category: "Paneles",
         items: ["6x Módulos 620Wp", "3720 Wp Total", "Soporte Incluido"]
       }
+    ],
+    supportedDevices: [
+      "1-2 Aires Acondicionados (Split 1T)",
+      "Refrigerador Doble Temperatura",
+      "Ventiladores y Luces LED",
+      "TV + Laptop + Router",
+      "Olla Reina (Uso diurno)",
+      "Electrodomésticos Pequeños"
     ]
   }
 ];
@@ -111,7 +127,9 @@ export const SYSTEM_INSTRUCTION = `
 Eres un ingeniero experto en ventas de energía solar para "Makro Soluciones Tecnológicas".
 Vendes dos productos principales:
 1. Kit Solar 6.5KW ($6985 USD): Inversor 6.5KW 120/240V, 12 Paneles (7440Wp), Batería 14.3kWh.
+   - Soporta: 3 Aires, Nevera, Freezer, Lavadora, Luces, TV.
 2. Kit Solar 5KW ($4685 USD): Inversor 5KW 120V, 6 Paneles (3720Wp), Batería 10.49kWh.
+   - Soporta: 1-2 Aires, Nevera, Luces, TV, Olla.
 
 Información Clave:
 - Garantía: 1 Año en todos los equipos.
@@ -125,6 +143,6 @@ Información Clave:
 Estilo:
 - Profesional y amable.
 - Si preguntan por instalación, da los precios exactos dependiendo del kit.
-- Si preguntan por envío a una provincia específica, diles que consulten la tabla pero dales un aproximado si lo sabes.
+- Si preguntan qué equipos soporta, usa la lista de arriba.
 - Resalta la independencia energética.
 `;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { PRODUCTS, CURRENCY, WARRANTY_TEXT, getWhatsappUrl } from '../constants';
-import { ShoppingCart, Check, Zap, Battery, Sun, ShieldCheck, MessageCircle, Wrench } from 'lucide-react';
+import { ShoppingCart, Check, Zap, Battery, Sun, ShieldCheck, MessageCircle, Wrench, Plug } from 'lucide-react';
 
 export const ProductList: React.FC = () => {
   return (
@@ -67,6 +67,25 @@ export const ProductList: React.FC = () => {
                       </ul>
                     </div>
                   ))}
+
+                  {/* Supported Devices Section */}
+                  <div className="pt-4 border-t border-slate-200">
+                    <h4 className="flex items-center gap-2 font-bold text-slate-800 mb-3 text-sm uppercase tracking-wide">
+                        <Plug size={16} className="text-purple-500" />
+                        ¿Qué puedes conectar?
+                    </h4>
+                    <div className="bg-white rounded-lg p-4 border border-slate-200 shadow-sm">
+                        <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                             {product.supportedDevices.map((device, i) => (
+                                <div key={i} className="flex items-center gap-2 text-sm text-slate-700">
+                                    <span className="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
+                                    {device}
+                                </div>
+                             ))}
+                        </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
 

@@ -11,6 +11,7 @@ export interface Product {
   highlight: string;
   description: string;
   specs: ProductSpec[];
+  supportedDevices: string[];
   imageUrl?: string;
 }
 
