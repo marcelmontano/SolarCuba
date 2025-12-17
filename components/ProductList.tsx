@@ -1,6 +1,6 @@
 import React from 'react';
 import { PRODUCTS, CURRENCY, WARRANTY_TEXT, getWhatsappUrl } from '../constants';
-import { ShoppingCart, Check, Zap, Battery, Sun, ShieldCheck, MessageCircle } from 'lucide-react';
+import { ShoppingCart, Check, Zap, Battery, Sun, ShieldCheck, MessageCircle, Wrench } from 'lucide-react';
 
 export const ProductList: React.FC = () => {
   return (
@@ -34,6 +34,15 @@ export const ProductList: React.FC = () => {
                     <span className="text-xs text-slate-500 font-bold">{CURRENCY}</span>
                   </div>
                 </div>
+                {/* Installation Cost Badge */}
+                <div className="mt-4 relative z-10 flex justify-end">
+                    <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1 rounded-lg border border-slate-700/50">
+                        <Wrench size={14} className="text-blue-400" />
+                        <span className="text-xs text-slate-300">
+                            Instalación opcional: <span className="font-bold text-white">${product.installationCost}</span>
+                        </span>
+                    </div>
+                </div>
               </div>
 
               {/* Body */}
@@ -64,7 +73,7 @@ export const ProductList: React.FC = () => {
               {/* Footer */}
               <div className="p-6 bg-slate-100 border-t border-slate-200">
                  <a 
-                  href={getWhatsappUrl(`Hola, me interesa consultar disponibilidad del ${product.name} de $${product.price}.`)}
+                  href={getWhatsappUrl(`Hola, me interesa consultar disponibilidad del ${product.name} ($${product.price} + $${product.installationCost} instalación opcional).`)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-4 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl shadow-lg shadow-green-900/20 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-1"

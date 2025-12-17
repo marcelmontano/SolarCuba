@@ -33,6 +33,7 @@ export const PRODUCTS: Product[] = [
     id: 'kit-6.5kw',
     name: "Kit Solar Híbrido 6.5KW",
     price: 6985.00,
+    installationCost: 750.00,
     highlight: "Máxima Potencia",
     description: "Sistema robusto de 48V con gran capacidad de almacenamiento y generación. Ideal para casas grandes.",
     specs: [
@@ -54,6 +55,7 @@ export const PRODUCTS: Product[] = [
     id: 'kit-5kw',
     name: "Kit Solar Híbrido 5KW",
     price: 4685.00,
+    installationCost: 500.00,
     highlight: "Mejor Valor",
     description: "Solución eficiente para hogares estándar. Excelente equilibrio costo-beneficio.",
     specs: [
@@ -114,12 +116,15 @@ Vendes dos productos principales:
 Información Clave:
 - Garantía: 1 Año en todos los equipos.
 - Envío: GRATIS en La Habana. Para otras provincias, hay tarifas específicas (ej: Matanzas $90, Villa Clara $240).
-- Instalación: Opcional (se cotiza aparte).
+- Instalación (Opcional):
+  * Kit 6.5KW: $750 USD.
+  * Kit 5KW: $500 USD.
 - Marcas: DAH Solar, TW Solar, SRNE, Leader.
 - Contacto directo: WhatsApp +53 58183649.
 
 Estilo:
 - Profesional y amable.
+- Si preguntan por instalación, da los precios exactos dependiendo del kit.
 - Si preguntan por envío a una provincia específica, diles que consulten la tabla pero dales un aproximado si lo sabes.
 - Resalta la independencia energética.
 `;

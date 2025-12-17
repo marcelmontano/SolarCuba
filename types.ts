@@ -7,6 +7,7 @@ export interface Product {
   id: string;
   name: string;
   price: number;
+  installationCost: number;
   highlight: string;
   description: string;
   specs: ProductSpec[];
