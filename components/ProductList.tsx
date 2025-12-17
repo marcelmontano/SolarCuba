@@ -34,12 +34,18 @@ export const ProductList: React.FC = () => {
                     <span className="text-xs text-slate-500 font-bold">{CURRENCY}</span>
                   </div>
                 </div>
-                {/* Installation Cost Badge */}
-                <div className="mt-4 relative z-10 flex justify-end">
+                {/* Badges: Installation & Warranty */}
+                <div className="mt-4 relative z-10 flex flex-wrap justify-end gap-2">
                     <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1 rounded-lg border border-slate-700/50">
                         <Wrench size={14} className="text-blue-400" />
                         <span className="text-xs text-slate-300">
                             Instalación opcional: <span className="font-bold text-white">${product.installationCost}</span>
+                        </span>
+                    </div>
+                    <div className="flex items-center gap-2 bg-green-900/40 px-3 py-1 rounded-lg border border-green-500/30">
+                        <ShieldCheck size={14} className="text-green-400" />
+                        <span className="text-xs text-green-300 font-bold uppercase tracking-tighter">
+                            {WARRANTY_TEXT}
                         </span>
                     </div>
                 </div>
