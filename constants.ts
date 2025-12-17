@@ -51,7 +51,7 @@ export const PRODUCTS: Product[] = [
       }
     ],
     supportedDevices: [
-      "3x Aires Acondicionados (Split 1T)",
+      "3x Aires Acondicionados 1T (220V)",
       "Refrigerador + Freezer",
       "Lavadora Automática",
       "Bomba de Agua (1/2 HP)",
@@ -81,7 +81,7 @@ export const PRODUCTS: Product[] = [
       }
     ],
     supportedDevices: [
-      "1-2 Aires Acondicionados (Split 1T)",
+      "1-2 Aires Acondicionados 1T (110V)",
       "Refrigerador Doble Temperatura",
       "Ventiladores y Luces LED",
       "TV + Laptop + Router",
@@ -127,9 +127,9 @@ export const SYSTEM_INSTRUCTION = `
 Eres un ingeniero experto en ventas de energía solar para "Makro Soluciones Tecnológicas".
 Vendes dos productos principales:
 1. Kit Solar 6.5KW ($6985 USD): Inversor 6.5KW 120/240V, 12 Paneles (7440Wp), Batería 14.3kWh.
-   - Soporta: 3 Aires, Nevera, Freezer, Lavadora, Luces, TV.
+   - Soporta: 3 Aires (220V), Nevera, Freezer, Lavadora, Luces, TV.
 2. Kit Solar 5KW ($4685 USD): Inversor 5KW 120V, 6 Paneles (3720Wp), Batería 10.49kWh.
-   - Soporta: 1-2 Aires, Nevera, Luces, TV, Olla.
+   - Soporta: 1-2 Aires (110V), Nevera, Luces, TV, Olla.
 
 Información Clave:
 - Garantía: 1 Año en todos los equipos.
@@ -144,5 +144,6 @@ Estilo:
 - Profesional y amable.
 - Si preguntan por instalación, da los precios exactos dependiendo del kit.
 - Si preguntan qué equipos soporta, usa la lista de arriba.
+- Aclara siempre que el Kit de 5KW es 120V (Aires 110V) y el de 6.5KW es 120/240V (Aires 220V).
 - Resalta la independencia energética.
 `;
