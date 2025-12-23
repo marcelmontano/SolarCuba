@@ -38,12 +38,14 @@ export const ProductList: React.FC = () => {
                     </span>
                 </div>
             )}
-            <div className="flex items-center gap-2 bg-green-900/40 px-3 py-1 rounded-lg border border-green-500/30">
-                <ShieldCheck size={12} className="text-green-400" />
-                <span className="text-[10px] text-green-300 font-bold uppercase">
-                    {WARRANTY_TEXT}
-                </span>
-            </div>
+            {product.category === 'hybrid' && (
+                <div className="flex items-center gap-2 bg-green-900/40 px-3 py-1 rounded-lg border border-green-500/30">
+                    <ShieldCheck size={12} className="text-green-400" />
+                    <span className="text-[10px] text-green-300 font-bold uppercase">
+                        {WARRANTY_TEXT}
+                    </span>
+                </div>
+            )}
         </div>
       </div>
 
