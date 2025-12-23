@@ -12,6 +12,7 @@ export interface Product {
   description: string;
   specs: ProductSpec[];
   supportedDevices: string[];
+  category: 'hybrid' | 'portable' | 'panels';
   imageUrl?: string;
 }
 
