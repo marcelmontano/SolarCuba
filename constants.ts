@@ -1,4 +1,3 @@
-
 import { Product, ShippingRate, ProductSpec } from './types';
 
 export const CURRENCY = "USD";
@@ -42,7 +41,7 @@ export const PRODUCTS: Product[] = [
     ],
     supportedDevices: ["Salida 110V", "1-2 Aires Acondicionados 1T (110V)", "Refrigerador", "Ventiladores y Luces LED", "TV + Laptop"]
   },
-  // --- ECOFLOW POWER STATIONS (Datos de Página 2 del PDF) ---
+  // --- ECOFLOW POWER STATIONS ---
   {
     id: 'river-2-pro',
     category: 'portable',
@@ -50,7 +49,7 @@ export const PRODUCTS: Product[] = [
     price: 535.00,
     installationCost: 0,
     highlight: "Portable & Versátil",
-    description: "Ideal para movilidad y emergencias. Carga rápida en 70 min y larga vida útil.",
+    description: "Ideal para movilidad y emergencias. Carga rápida en 70 min.",
     specs: [
       { category: "Potencia", items: ["800W Salida CA", "Surge 1600W"] },
       { category: "Capacidad", items: ["768 Wh", "Peso: 7.8 kg"] },
@@ -65,7 +64,7 @@ export const PRODUCTS: Product[] = [
     price: 871.00,
     installationCost: 0,
     highlight: "Carga Ultra Rápida",
-    description: "Potencia balanceada para uso doméstico. Carga de pared en solo 56 minutos.",
+    description: "Potencia balanceada para uso doméstico. Carga en 56 minutos.",
     specs: [
       { category: "Potencia", items: ["1800W Salida CA", "Surge 3600W"] },
       { category: "Capacidad", items: ["1024 Wh", "Peso: 12.52 kg"] },
@@ -80,13 +79,13 @@ export const PRODUCTS: Product[] = [
     price: 1584.00,
     installationCost: 0,
     highlight: "Energía Familiar",
-    description: "Capacidad de 2kWh para respaldar electrodomésticos grandes durante apagones.",
+    description: "Capacidad de 2kWh para respaldar electrodomésticos grandes.",
     specs: [
       { category: "Potencia", items: ["2400W Salida CA", "Surge 4800W"] },
       { category: "Capacidad", items: ["2048 Wh", "Peso: 23 kg"] },
       { category: "Carga", items: ["Pared: 91 min", "Solar: 1000W / 3-13h"] }
     ],
-    supportedDevices: ["Laptop (60Wh) hasta 26 veces", "Cafetera (1000W) 1.6 horas", "15 Puertos de salida", "Silencioso"]
+    supportedDevices: ["Laptop (60Wh) hasta 26 veces", "Cafetera (1000W) 1.6 horas", "15 Puertos de salida"]
   },
   {
     id: 'delta-pro',
@@ -95,15 +94,14 @@ export const PRODUCTS: Product[] = [
     price: 1972.00,
     installationCost: 0,
     highlight: "Potencia Industrial",
-    description: "La estación portátil más avanzada. Salida de 3600W para equipos pesados.",
+    description: "La estación portátil más avanzada. Salida de 3600W.",
     specs: [
       { category: "Potencia", items: ["3600W Salida CA", "Surge 7200W"] },
       { category: "Capacidad", items: ["3600 Wh", "Peso: 45 kg"] },
       { category: "Carga", items: ["Pared: 2.7 horas", "Solar: 1600W / 3-12h"] }
     ],
-    supportedDevices: ["Laptop (60Wh) hasta 57 veces", "Cafetera (1000W) 3.3 horas", "14 Puertos de salida", "Capacidad Expandible"]
+    supportedDevices: ["Laptop (60Wh) hasta 57 veces", "Cafetera (1000W) 3.3 horas", "14 Puertos de salida"]
   },
-  // --- PANELES PORTATILES (Datos de Página 1 del PDF) ---
   {
     id: 'panel-220w',
     category: 'panels',
@@ -111,12 +109,12 @@ export const PRODUCTS: Product[] = [
     price: 306.00,
     installationCost: 0,
     highlight: "Eficiencia 25%",
-    description: "Panel bifacial plegable. Máxima captura de energía en formato compacto.",
+    description: "Panel bifacial plegable e impermeable IP68.",
     specs: [
       { category: "Potencia", items: ["220W Nominal", "Eficiencia: 25%"] },
-      { category: "Diseño", items: ["IP68 (Impermeable)", "Peso: 7.2 kg"] }
+      { category: "Diseño", items: ["IP68", "Peso: 7.2 kg"] }
     ],
-    supportedDevices: ["Carga de River 2 Pro", "Carga de Delta Series", "Uso Camping/Outdoor"]
+    supportedDevices: ["Carga de River 2 Pro", "Carga de Delta Series", "Uso Camping"]
   },
   {
     id: 'panel-400w',
@@ -125,12 +123,12 @@ export const PRODUCTS: Product[] = [
     price: 587.00,
     installationCost: 0,
     highlight: "Máxima Recarga",
-    description: "Panel de alta potencia para cargar estaciones Delta rápidamente.",
+    description: "Panel de alta potencia plegable e impermeable IP68.",
     specs: [
       { category: "Potencia", items: ["400W Nominal", "Eficiencia: 22.6%"] },
-      { category: "Diseño", items: ["IP68 (Impermeable)", "Peso: 16.0 kg"] }
+      { category: "Diseño", items: ["IP68", "Peso: 16.0 kg"] }
     ],
-    supportedDevices: ["Carga rápida Delta 3", "Carga rápida Delta Max", "Sistemas Off-grid"]
+    supportedDevices: ["Carga rápida Delta 3", "Carga rápida Delta Max"]
   }
 ];
 
@@ -156,47 +154,45 @@ export const SHIPPING_RATES: ShippingRate[] = [
 ];
 
 export const SYSTEM_INSTRUCTION = `
-Eres un ingeniero experto en ventas de energía solar para "Makro Soluciones Tecnológicas".
-Tu catálogo ahora incluye soluciones residenciales fijas y estaciones portátiles EcoFlow.
+Eres el Ingeniero de Ventas Senior de "Makro Soluciones Tecnológicas". 
+Tu objetivo es asesorar a clientes sobre energía solar y logística de envío en Cuba.
 
-RESUMEN DE PRODUCTOS:
-1. KITS HÍBRIDOS (Residenciales):
-   - 6.5KW ($6985): 120/240V. Soporta 3 aires 220V.
-   - 5KW ($4685): 110V. Soporta 1-2 aires 110V.
+CATÁLOGO RESUMIDO:
+1. KITS HÍBRIDOS (Residenciales, 1 año de garantía):
+   - 6.5KW ($6985): Soporta 220V, aires acondicionados, etc.
+   - 5KW ($4685): Soporta 110V, ideal para el hogar estándar.
+2. ESTACIONES ECOFLOW (Portátiles, sin garantía):
+   - River 2 Pro ($535), Delta 3 ($871), Delta 2 Max ($1584), Delta Pro ($1972).
+3. PANELES PORTÁTILES: 220W ($306) y 400W ($587).
 
-2. ECOFLOW POWER STATIONS (Portátiles):
-   - River 2 Pro ($535): 800W / 768Wh. Carga laptop 12 veces.
-   - Delta 3 ($871): 1800W / 1024Wh. Carga laptop 16 veces.
-   - Delta 2 Max ($1584): 2400W / 2048Wh. Carga laptop 26 veces.
-   - Delta Pro ($1972): 3600W / 3600Wh. Carga laptop 57 veces.
+LOGÍSTICA Y ENVÍOS (Aclara esto siempre que pregunten):
+- La Habana: Mensajería GRATIS.
+- Otras regiones (Tarifas máximas en USD):
+  Pinar Centro ($145), Viñales ($170), Matanzas ($90), Varadero ($130), Artemisa ($65), Mayabeque ($60), Villa Clara ($240), Cienfuegos ($205), Sancti Spiritus ($310).
 
-3. PANELES PORTÁTILES:
-   - 220W ($306) y 400W ($587). Plegables, eficientes y resistentes al agua.
-
-TU MISIÓN:
-- Asesorar sobre qué kit o estación conviene según la necesidad.
-- Si el cliente quiere movilidad o no instalar paneles fijos, sugiere EcoFlow.
-- Si el cliente quiere energía para toda la casa (incluyendo aires acondicionados 220V), sugiere el Kit de 6.5KW.
-- Garantía de 1 año. Envío Gratis en La Habana.
-- Contacto: WhatsApp +53 58183649.
+REGLAS DE RESPUESTA:
+- Usa un tono profesional y amable.
+- Si preguntan por "precio a [Provincia]", responde con la tarifa de logística exacta.
+- Si el cliente menciona equipos específicos (ej. "tengo 2 aires"), recomienda el Kit de 6.5KW por su salida de 220V.
+- Para camping o movilidad, recomienda EcoFlow.
+- Siempre menciona que el contacto final es vía WhatsApp +53 58183649.
 `;
 
-// Fix: Added missing PRODUCT_SPECS export required by Specs.tsx
 export const PRODUCT_SPECS: ProductSpec[] = [
   {
     category: "Inversor Híbrido",
-    items: ["Eficiencia 1.14 (98%)", "Onda Senoidal Pura 120/240V", "Cargador Solar MPPT 120A", "Compatible con Generador"]
+    items: ["Eficiencia 1.14 (98%)", "Onda Senoidal Pura 120/240V", "Cargador Solar MPPT 120A"]
   },
   {
     category: "Batería de Litio",
-    items: ["Tecnología LiFePO4", "Ciclo de Vida > 6000 cargas", "BMS Inteligente Integrado", "Protección contra sobrecarga"]
+    items: ["Tecnología LiFePO4", "Ciclo de Vida > 6000 cargas", "BMS Inteligente Integrado"]
   },
   {
     category: "Paneles Solares",
-    items: ["Celdas Mono-Perc Alta Eficiencia", "Marco de aluminio anodizado", "Caja de conexiones IP68", "Vidrio Templado 3.2mm"]
+    items: ["Celdas Mono-Perc Alta Eficiencia", "Marco de aluminio anodizado", "IP68"]
   },
   {
     category: "Soporte Makro",
-    items: ["Garantía Certificada", "Asistencia Técnica 24/7", "Instalación Profesional", "Software de Monitoreo"]
+    items: ["Asistencia Técnica 24/7", "Instalación Profesional", "Software de Monitoreo"]
   }
 ];
