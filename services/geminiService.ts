@@ -1,35 +1,39 @@
-import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai";
+import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 import { SYSTEM_INSTRUCTION } from "../constants";
-
-let chatSession: Chat | null = null;
-
-export const initializeChat = (): Chat => {
-  if (chatSession) return chatSession;
-
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
-  
-  // Se utiliza gemini-flash-lite-latest para máxima velocidad/baja latencia
-  chatSession = ai.chats.create({
-    model: 'gemini-flash-lite-latest',
-    config: {
-      systemInstruction: SYSTEM_INSTRUCTION,
-      temperature: 0.7,
-    },
-  });
-
-  return chatSession;
-};
 
 export const sendMessageToGemini = async (message: string): Promise<string> => {
   try {
-    const chat = initializeChat();
-    const result: GenerateContentResponse = await chat.sendMessage({
-      message: message
+    // Verificación de API Key
+    const apiKey = process.env.API_KEY;
+    if (!apiKey) {
+      console.error("API_KEY no configurada en el entorno.");
+      throw new Error("Configuración incompleta");
+    }
+
+    // Creamos una instancia fresca en cada llamada para evitar estados corruptos en móviles
+    const ai = new GoogleGenAI({ apiKey });
+    
+    // Usamos gemini-3-flash-preview para máxima compatibilidad y velocidad
+    const response: GenerateContentResponse = await ai.models.generateContent({
+      model: 'gemini-3-flash-preview',
+      contents: message,
+      config: {
+        systemInstruction: SYSTEM_INSTRUCTION,
+        temperature: 0.7,
+        topP: 0.95,
+        topK: 40,
+      },
     });
     
-    return result.text || "Disculpa, no pude procesar esa respuesta. ¿Podrías reformular la pregunta?";
-  } catch (error) {
+    return response.text || "No recibí una respuesta clara. Inténtalo de nuevo.";
+  } catch (error: any) {
     console.error("Gemini API Error:", error);
-    throw new Error("Error de conexión con el asistente de ventas.");
+    
+    // Error específico para bloqueo geográfico o de red
+    if (error.message?.includes('fetch') || error.message?.includes('network')) {
+      throw new Error("Error de red: Verifica tu conexión o si el servicio está disponible en tu región.");
+    }
+    
+    throw new Error("Error al conectar con el asistente.");
   }
 };

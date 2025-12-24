@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Loader2, Bot } from 'lucide-react';
+import { MessageCircle, X, Send, Loader2, Bot, AlertCircle } from 'lucide-react';
 import { sendMessageToGemini } from '../services/geminiService';
 import { ChatMessage } from '../types';
 
@@ -31,8 +31,12 @@ export const ChatBot: React.FC = () => {
     try {
       const responseText = await sendMessageToGemini(input);
       setMessages(prev => [...prev, { role: 'model', text: responseText }]);
-    } catch (error) {
-      setMessages(prev => [...prev, { role: 'model', text: "Lo siento, tuve un problema de conexión. Intenta de nuevo.", isError: true }]);
+    } catch (error: any) {
+      setMessages(prev => [...prev, { 
+        role: 'model', 
+        text: error.message || "Lo siento, hubo un error de conexión. Si estás en Cuba, recuerda que este servicio puede requerir VPN.", 
+        isError: true 
+      }]);
     } finally {
       setIsLoading(false);
     }
@@ -46,7 +50,7 @@ export const ChatBot: React.FC = () => {
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
       {/* Chat Window */}
       {isOpen && (
-        <div className="mb-4 w-80 md:w-96 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col h-[500px] transition-all animate-fade-in-up">
+        <div className="mb-4 w-[85vw] sm:w-80 md:w-96 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col h-[500px] transition-all animate-fade-in-up">
           {/* Header */}
           <div className="bg-slate-900 p-4 flex justify-between items-center text-white">
             <div className="flex items-center gap-2">
@@ -75,10 +79,11 @@ export const ChatBot: React.FC = () => {
                     msg.role === 'user' 
                       ? 'bg-blue-600 text-white rounded-tr-none' 
                       : msg.isError 
-                        ? 'bg-red-100 text-red-700 rounded-tl-none'
+                        ? 'bg-red-50 border border-red-100 text-red-700 rounded-tl-none flex flex-col gap-2'
                         : 'bg-white text-slate-700 shadow-sm border border-slate-100 rounded-tl-none'
                   }`}
                 >
+                  {msg.isError && <AlertCircle size={14} className="text-red-500" />}
                   {msg.text}
                 </div>
               </div>
