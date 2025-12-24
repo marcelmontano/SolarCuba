@@ -6,9 +6,7 @@ import { Gallery } from './components/Gallery';
 import { ShippingRates } from './components/ShippingRates';
 import { SystemDiagram } from './components/SystemDiagram';
 import { ContactForm } from './components/ContactForm';
-import { ChatBot } from './components/ChatBot';
 import { Footer } from './components/Footer';
-import { SmartRecommender } from './components/SmartRecommender';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -71,7 +69,6 @@ function App() {
 
       <main className="pt-16">
         <Hero />
-        <SmartRecommender />
         <ProductList />
         <Gallery />
         <SystemDiagram />
@@ -80,7 +77,6 @@ function App() {
       </main>
 
       <Footer />
-      <ChatBot />
     </div>
   );
 }
